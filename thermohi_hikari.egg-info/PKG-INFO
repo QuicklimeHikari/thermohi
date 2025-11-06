@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: thermohi_hikari
+Version: 0.1.2
+Summary: Thermal analysis toolkit for non-isothermal kinetic analysis (FWO, KAS, Starink, etc.)
+Home-page: https://github.com/QuicklimeHikari/thermohi
+Author: Hikari Quicklime
+Requires-Python: >=3.9
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Dynamic: author
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
