@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: thermohi_hikari
-Version: 0.1.2
+Version: 0.1.3
 Summary: Thermal analysis toolkit for non-isothermal kinetic analysis (FWO, KAS, Starink, etc.)
 Home-page: https://github.com/QuicklimeHikari/thermohi
 Author: Hikari Quicklime

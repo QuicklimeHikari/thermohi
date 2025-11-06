@@ -31,4 +31,4 @@ If the temperature is in Celsius or Fahrenheit, it will be converted to Kelvin a
         elif unit not in (None, "c", "C", "k", "K",'f','F'):
             raise ValueError("unit 参数只能是 'c' 或 'k'")
         self.beta = list(beta)  #对应升温速率列表
-        self.dadt = list(dadT)  #对应da/dT列表
+        self.dadT = list(dadT)  #对应da/dT列表
