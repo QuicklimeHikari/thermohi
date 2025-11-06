@@ -1,7 +1,7 @@
 # ThermoHi
 _A lightweight Python toolkit for thermal kinetics data analysis and visualization._
 
-[![PyPI Version](https://img.shields.io/pypi/v/thermohi)](https://pypi.org/project/thermohi/)
+[![PyPI Version](https://img.shields.io/pypi/v/thermohi_hikari)](https://pypi.org/project/thermohi_hikari/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)]
 
