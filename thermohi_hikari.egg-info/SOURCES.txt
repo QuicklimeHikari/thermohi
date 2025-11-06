@@ -1,3 +1,4 @@
+README.md
 pyproject.toml
 setup.py
 tests/test_analysis.py
@@ -8,5 +9,4 @@ thermohi_hikari/thermoanalysis.py
 thermohi_hikari.egg-info/PKG-INFO
 thermohi_hikari.egg-info/SOURCES.txt
 thermohi_hikari.egg-info/dependency_links.txt
-thermohi_hikari.egg-info/requires.txt
 thermohi_hikari.egg-info/top_level.txt
