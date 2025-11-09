@@ -42,4 +42,4 @@ Forestry Industry Researcher & Independent Developer
 ## ⚙️ Installation
 
 ```bash
-pip install thermohi
+pip install thermohi_hikari
