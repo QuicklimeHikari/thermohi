@@ -18,8 +18,8 @@ with clean APIs and ready-to-plot results. (You can also export the data and use
 
 ---
 ## examples
-FWO method：
-![FWO method](plot_thermohi/Figure_1.png)
+
+![FWO method](plot_thermohi/Figure_1.png "FWO method")
 
 KAS method:
 ![KAS method](plot_thermohi/Figure_2.png)
