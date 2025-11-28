@@ -2,8 +2,8 @@
 requires = ["setuptools>=40.8.0", "wheel"]
 build-backend = "setuptools.build_meta"
 [project]
-name = "thermohi-hikari"
-version = "0.1.2"
+name = "thermohipy"
+version = "0.2.0"
 description = "A thermogravimetric analysis helper tool by Hikari."
 readme = { file = "README.md", content-type = "text/markdown" }
 license = { text = "MIT" }

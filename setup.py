@@ -1,12 +1,13 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="thermohi_hikari",
-    version='0.1.2',
+    name="thermohipy",
+    version='0.2.0',
     packages=find_packages(),
     install_requires=[
         'numpy',
-        'matplotlib'
+        'matplotlib',
+        'scipy'
     ],
     python_requires='>=3.9',
     author='Hikari Quicklime',

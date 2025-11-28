@@ -147,8 +147,8 @@ dadT : list of tuple(float)
         self.results = {}   # 计算的结果为一个字典
         self.raw_data = {}
         for alpha, data in zip(self.alpha_list, self.objects_data):
-            log_beta = [np.log(beta * dadT) for beta, dadT \
-                         in zip(data.beta, data.dadT)]
+            log_beta = [np.log(beta * dadt) for beta, dadt \
+                         in zip(data.beta, data.dadt)]
             data_temp = [1 / temp for temp in data.temperature]
             k, b, r2 = r_square_xy(data_temp, log_beta)
             ea = - self.R / 1000 * k
@@ -162,6 +162,36 @@ dadT : list of tuple(float)
             'x': [float(temp) for temp in data_temp],
             'y': [float(beta) for beta in log_beta]
             }
+        if return_data:
+            return self.results, self.raw_data
+        else:
+            return self.results
+        
+    def vyazovkin_ea(self, return_data = False):
+        self.results = dict()
+        self.raw_data = dict()
+        # （cai近似式）        
+        def I(E, T):
+            R = self.R / 1000  #  kJ/mol
+            return (R * T ** 2 / E) * ((E + 0.66691 * R * T) / (E + 2.64943 * R * T)) * np.exp(-E / (R * T))
+        
+        for alpha, data in zip(self.alpha_list, self.objects_data):
+            def Phi(E):
+                Phi = 0.0
+                for i in range(len(data.beta)):
+                    for j in range(len(data.beta)):
+                        if j == i:
+                            continue
+                        else:
+                            Phi += (I(E, data.temperature[i]) / data.beta[i]) / (I(E, data.temperature[j]) / data.beta[j])
+                return Phi            
+
+            Phi_min  = sp.minimize_scalar(Phi, bounds = (10, 1000),method = 'bounded')
+            self.results[alpha] = {'Ea = ': float(Phi_min.x)}
+            a = float(Phi_min.x)
+            self.raw_data[alpha] = {'x': np.linspace((a - 50),(a + 50), 100),
+                             'y': [float(Phi(i)) for i in np.linspace((a - 50),(a + 50), 100)]
+                            }
         if return_data:
             return self.results, self.raw_data
         else:

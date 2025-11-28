@@ -1,7 +1,7 @@
 # ThermoHi
 _A lightweight Python toolkit for thermal kinetics data analysis and visualization._
 
-[![PyPI Version](https://img.shields.io/pypi/v/thermohi_hikari)](https://pypi.org/project/thermohi_hikari/)
+[![PyPI Version](https://img.shields.io/pypi/v/thermohipy)](https://pypi.org/project/thermohipy/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)]
 
@@ -11,7 +11,7 @@ _A lightweight Python toolkit for thermal kinetics data analysis and visualizati
 
 **ThermoHi** is a small, research-oriented Python package for thermal kinetic analysis  
 and data visualization, designed for TG/DTG analysis in polymer and biomass systems.  
-It supports model-free methods such as **FWO**, **KAS**, **Starink**, and **Friedman**,  
+It supports model-free methods such as **FWO**, **KAS**, **Starink**, **Friedman**, and  **Vyazovkin method**
 with clean APIs and ready-to-plot results.
 > An example file (`example.py`) is included to illustrate the usage of ThermoHi's main functionalities.
 
@@ -22,7 +22,6 @@ Future versions of **ThermoHi** will include:
 
 - [ ] Support for importing experimental data directly from `.csv` or `.xlsx` files (via `pandas`)
 - [ ] Unified plotting style for publication-ready figures (Matplotlib themes)
-- [ ] Implementation of the **Vyazovkin method**
 - [ ] Exporting results as `.csv`
 - [ ] Directly read TG/DTG experimental data and automatically extract corresponding `(T, β, dα/dT)` values based on user-selected α
 
@@ -42,4 +41,4 @@ Forestry Industry Researcher & Independent Developer
 ## ⚙️ Installation
 
 ```bash
-pip install thermohi_hikari
+pip install thermohipy
