@@ -1,4 +1,5 @@
 import numpy as np
+import scipy.optimize as sp
 def r_square_xy(x,y):
     # function 1 
     # r_square 用于输出k, b, r^2
@@ -147,8 +148,8 @@ dadT : list of tuple(float)
         self.results = {}   # 计算的结果为一个字典
         self.raw_data = {}
         for alpha, data in zip(self.alpha_list, self.objects_data):
-            log_beta = [np.log(beta * dadt) for beta, dadt \
-                         in zip(data.beta, data.dadt)]
+            log_beta = [np.log(beta * dadT) for beta, dadT \
+                         in zip(data.beta, data.dadT)]
             data_temp = [1 / temp for temp in data.temperature]
             k, b, r2 = r_square_xy(data_temp, log_beta)
             ea = - self.R / 1000 * k
