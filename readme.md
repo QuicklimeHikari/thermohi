@@ -19,15 +19,19 @@ with clean APIs and ready-to-plot results. (You can also export the data and use
 ---
 ## examples
 FWO method：
-![FWO method](plot_thermohi/Figure_1.png "FWO method")
+![FWO method](plot_thermohi/Figure_1.png)
+
 KAS method:
-![KAS method](plot_thermohi/Figure_2.png "KAS method")
+![KAS method](plot_thermohi/Figure_2.png)
+
 Starink method:
-![Starink method](plot_thermohi/Figure_3.png "Starink method")
+![Starink method](plot_thermohi/Figure_3.png)
+
 Friedman method:
-![Friedman method](plot_thermohi/Figure_4.png "Friedman method")
+![Friedman method](plot_thermohi/Figure_4.png)
+
 Vyazovkin method:
-![Vyazovkin method](plot_thermohi/Figure_5.png "Vyazovkin method")
+![Vyazovkin method](plot_thermohi/Figure_5.png)
 
 ## 🔬 Planned Features
 Future versions of **ThermoHi** will include:
