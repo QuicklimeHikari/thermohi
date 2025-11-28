@@ -15,6 +15,9 @@ It supports calculating apparent activation energy with model-free methods such 
 with clean APIs and ready-to-plot results. (You can also export the data and use your own software to create the plots.)
 
 > An example file (`example.py`) is included to illustrate the usage of ThermoHi's main functionalities.
+> Supports all temperature units (Celsius C, Fahrenheit F, Kelvin K), which are internally converted to Kelvin (thermodynamic temperature). For detailed usage, see examples and Datalist.
+There is no limit on the number of heating runs or conversion values; the examples include data with 3 heating rates and 9 conversion values.
+Data can be exported for plotting. Note: Vyazovkin method may generate a very large amount of data.
 
 ---
 ## examples
