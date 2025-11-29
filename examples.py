@@ -1,10 +1,11 @@
 import thermohipy as th
 
-# Validation 数据验证：
 # th.Datalist(T_list, heating_rate_list, dadT_list, unit)
-alpha = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-beta = [5, 10, 30]
-data_object = [th.DataList([264.8, 269.75, 284.65], [5, 10, 30], 
+# unit = 'c' means Celcisus, unit = 'f' means Fahrenheit, unit = 'k' or blank means Kelvin
+
+alpha = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]   # conversion value
+beta = [5, 10, 30]  # heating rates
+data_object = [th.DataList([264.8, 269.75, 284.65], beta, 
                         [0.00271, 0.00257, 0.00246], unit='c'),
                th.DataList([294.65, 301.15, 317.5], beta, 
                         [0.00394, 0.00375, 0.00359], unit='c'),
@@ -22,9 +23,9 @@ data_object = [th.DataList([264.8, 269.75, 284.65], [5, 10, 30],
                         [0.00289, 0.00282, 0.00283], unit='f'),
                th.DataList([895.28, 919.31, 954.05], beta, 
                         [0.00175, 0.00176, 0.00185], unit='f')]
+analysis = th.KineticAnalysis(alpha, data_object)
 
-
-analysis = th.KineticAnalysis(alpha, data_object)    # 表明，数据已传入热分析类中
+# plots drawing
 picplot = th.FittingPlot(alpha, data_object, analysis)
 pic1 = picplot.fwoplot()
 pic2 = picplot.kasplot()
@@ -32,27 +33,48 @@ pic3 = picplot.starinkplot()
 pic4 = picplot.friedmanplot()
 pic5 = picplot.vyazovkinplot()
 
-# result5_data = result5[0]
-# result5_raw_data = result5[1]
-# print(result5_data, result5_raw_data)
+# show the results only
+results1 = analysis.fwo_ea(return_data = False)
+print(type(results1))   # <class 'dict'>
+print("_" *15, "return_data = False", "_" *15)
+print("alpha Ea         k           b      r^2")
+print("_"*50)
+for key in results1:
+    ea = results1[key]['Ea = '] # class of results1[key] is also 'dict'
+    k = results1[key]['k = ']
+    b = results1[key]['b = ']
+    r2 = results1[key]['r^2 = ']
+    print(key, f"{ea:.2f}, {k:.4f}, {b:.4f}, {r2:.4f}")
+print("_"*25,"end","_"*25,"\n")
 
 
 # show the results and plotting data
 # if return_data is True the results is a tuple(results, raw data for plotting)) consists of 2 dict.
-results1 = analysis.fwo_ea(return_data = True)
 results2 = analysis.kas_ea(return_data = True)
-results3 = analysis.starink_ea(return_data = True)
-results4 = analysis.friedman_ea(return_data = True)
-results5 = analysis.vyazovkin_ea(return_data = True)
+results2_data = results2[0] # Ea, k, b, and r2
+results2_raw_data = results2[1] # plot points
+print("_" *15, "return_data = True", "_" *15)
+print("alpha Ea         k           b      r^2")
+print("_"*50)
+for key in results2_data:
+    ea = results2_data[key]['Ea = '] # class of results1[key] is also 'dict'
+    k = results2_data[key]['k = ']
+    b = results2_data[key]['b = ']
+    r2 = results2_data[key]['r^2 = ']
+    print(key, f"{ea:.2f}, {k:.4f}, {b:.4f}, {r2:.4f}")
+print("_"*25,"end","_"*25,"\n")
 
-results1_data = results1[0]
-results1_raw_data = results1[1]
-print(results1_data, results1_raw_data)
+print("_" *25, "points for linear fitting -x", "_" *25) 
+for key in results2_raw_data:
+    print(key, results2_raw_data[key]['x'])
+print("_" *25, "points for linear fitting -y", "_" *25) 
+for key in results2_raw_data:
+    print(key, results2_raw_data[key]['y'])
 # Note that for all methods except the Vyazovkin method, the returned raw data is intended for scatter plots (depending on the number of heating). 
 # For the Vyazovkin method, the returned raw data is intended for curve plots (with 100 points).
-results5_data = results5[0]
-results5_raw_data = results5[1]
-print(results5_data, results5_raw_data)
+
+
+
 
 
 
