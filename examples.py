@@ -24,8 +24,6 @@ data_object = [th.DataList([264.8, 269.75, 284.65], beta,
                th.DataList([895.28, 919.31, 954.05], beta, 
                         [0.00175, 0.00176, 0.00185], unit='f')]
 analysis = th.KineticAnalysis(alpha, data_object)
-<<<<<<< HEAD
-
 # plots drawing
 # picplot = th.FittingPlot(alpha, data_object, analysis)
 # pic1 = picplot.fwoplot()
@@ -52,7 +50,6 @@ print("_"*25,"end","_"*25,"\n")
 # show the results and plotting data （return data = True, except Vyazovkin method）
 # if return_data is True the results is a tuple(results, raw data for plotting)) consists of 2 dict.
 results2 = analysis.fwo_ea(return_data = True)
-=======
 
 # plots drawing
 picplot = th.FittingPlot(alpha, data_object, analysis)
@@ -80,7 +77,6 @@ print("_"*25,"end","_"*25,"\n")
 # show the results and plotting data
 # if return_data is True the results is a tuple(results, raw data for plotting)) consists of 2 dict.
 results2 = analysis.kas_ea(return_data = True)
->>>>>>> fix-detached
 results2_data = results2[0] # Ea, k, b, and r2
 results2_raw_data = results2[1] # plot points
 print("_" *15, "return_data = True", "_" *15)
@@ -106,7 +102,6 @@ for key in results2_raw_data:
 ### Vyazovkin method ###
 # return data structure(tuple): ({'alpha':{'Ea = ': value}, ...}, {'alpha':{'x': value, 'y': value},...})
 # For the Vyazovkin method, the returned raw data is intended for curve plots (with 100 points).
-<<<<<<< HEAD
 results3 = analysis.vyazovkin_ea(return_data = True)
 results3_data = results3[0] # tuple[0] = {'alpha':{'Ea = ': value}, 'alpha2':{'Ea = ': value}, ...}
 results3_raw_data = results3[1] # tuple[1] = {'alpha1':{'x': value, 'y': value}, 'alpha2':{'x': value, 'y': value}...}
@@ -123,11 +118,6 @@ print("_" *25, "points for linear fitting -y", "_" *25)
 for key in results3_raw_data:
     print(key, results3_raw_data[key]['y'])
 print("_"*25,"end","_"*25,"\n")
-=======
-
-
-
->>>>>>> fix-detached
 
 
 
