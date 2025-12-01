@@ -24,6 +24,35 @@ data_object = [th.DataList([264.8, 269.75, 284.65], beta,
                th.DataList([895.28, 919.31, 954.05], beta, 
                         [0.00175, 0.00176, 0.00185], unit='f')]
 analysis = th.KineticAnalysis(alpha, data_object)
+<<<<<<< HEAD
+
+# plots drawing
+# picplot = th.FittingPlot(alpha, data_object, analysis)
+# pic1 = picplot.fwoplot()
+# pic2 = picplot.kasplot()
+# pic3 = picplot.starinkplot()
+# pic4 = picplot.friedmanplot()
+# pic5 = picplot.vyazovkinplot()
+
+# show the results only (return data = True, except Vyazovkin method)
+results1 = analysis.fwo_ea(return_data = False)
+print(type(results1))   # <class 'dict'>
+print("_" *15, "return_data = False", "_" *15)
+print("alpha Ea         k           b      r^2")
+print("_"*50)
+for key in results1:
+    ea = results1[key]['Ea = '] # class of results1[key] is also 'dict'
+    k = results1[key]['k = ']
+    b = results1[key]['b = ']
+    r2 = results1[key]['r^2 = ']
+    print(key, f"{ea:.2f}, {k:.4f}, {b:.4f}, {r2:.4f}")
+print("_"*25,"end","_"*25,"\n")
+
+
+# show the results and plotting data （return data = True, except Vyazovkin method）
+# if return_data is True the results is a tuple(results, raw data for plotting)) consists of 2 dict.
+results2 = analysis.fwo_ea(return_data = True)
+=======
 
 # plots drawing
 picplot = th.FittingPlot(alpha, data_object, analysis)
@@ -51,6 +80,7 @@ print("_"*25,"end","_"*25,"\n")
 # show the results and plotting data
 # if return_data is True the results is a tuple(results, raw data for plotting)) consists of 2 dict.
 results2 = analysis.kas_ea(return_data = True)
+>>>>>>> fix-detached
 results2_data = results2[0] # Ea, k, b, and r2
 results2_raw_data = results2[1] # plot points
 print("_" *15, "return_data = True", "_" *15)
@@ -71,10 +101,33 @@ print("_" *25, "points for linear fitting -y", "_" *25)
 for key in results2_raw_data:
     print(key, results2_raw_data[key]['y'])
 # Note that for all methods except the Vyazovkin method, the returned raw data is intended for scatter plots (depending on the number of heating). 
+
+
+### Vyazovkin method ###
+# return data structure(tuple): ({'alpha':{'Ea = ': value}, ...}, {'alpha':{'x': value, 'y': value},...})
 # For the Vyazovkin method, the returned raw data is intended for curve plots (with 100 points).
+<<<<<<< HEAD
+results3 = analysis.vyazovkin_ea(return_data = True)
+results3_data = results3[0] # tuple[0] = {'alpha':{'Ea = ': value}, 'alpha2':{'Ea = ': value}, ...}
+results3_raw_data = results3[1] # tuple[1] = {'alpha1':{'x': value, 'y': value}, 'alpha2':{'x': value, 'y': value}...}
+print("_" *15, "Vyazovkin method", "_" *15)
+for key in results3_data:
+    ea = results3_data[key]['Ea = '] 
+    print(key, f"{ea:.2f}")
+print("_"*25,"end","_"*25,"\n")
+
+print("_" *25, "points for linear fitting -x", "_" *25) 
+for key in results3_raw_data:
+    print(key, results3_raw_data[key]['x'])
+print("_" *25, "points for linear fitting -y", "_" *25) 
+for key in results3_raw_data:
+    print(key, results3_raw_data[key]['y'])
+print("_"*25,"end","_"*25,"\n")
+=======
 
 
 
+>>>>>>> fix-detached
 
 
 
