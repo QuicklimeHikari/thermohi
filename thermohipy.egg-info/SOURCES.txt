@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+setup.py
+tests/test_analysis.py
+thermohipy/__init__.py
+thermohipy/datalistio.py
+thermohipy/export.py
+thermohipy/plotting.py
+thermohipy/thermoanalysis.py
+thermohipy.egg-info/PKG-INFO
+thermohipy.egg-info/SOURCES.txt
+thermohipy.egg-info/dependency_links.txt
+thermohipy.egg-info/top_level.txt
