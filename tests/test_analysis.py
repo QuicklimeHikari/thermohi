@@ -1,7 +1,8 @@
 import pytest
-from thermohi_hikari.datalistio import DataList
-from thermohi_hikari.thermoanalysis import KineticAnalysis, r_square_xy
-from thermohi_hikari.plotting import FittingPlot
+from thermohipy.datalistio import DataList
+from thermohipy.thermoanalysis import KineticAnalysis, r_square_xy
+from thermohipy.plotting import FittingPlot
+from thermohipy.export import ExportData
 
 
 # 验证温度转换功能
@@ -59,8 +60,8 @@ data_object = [DataList([241.9, 251.85, 263.5, 270.9], [5,10,20,30],
                         [0.00942, 0.00927, 0.00925, 0.00914], unit='c')]
 def test_fwo():
     analysis = KineticAnalysis(alpha, data_object)
-    result = analysis.fwo_ea(return_data = False)
-    a, b, c= [result[i].get('Ea = ') for i in alpha] 
+    result = analysis.fwo_ea(return_data=False)
+    a, b, c= [result[i].get('Ea') for i in alpha] 
     assert a == pytest.approx(136.5535)
     assert b == pytest.approx(153.1332)
     assert c == pytest.approx(164.8637)
@@ -68,7 +69,7 @@ def test_fwo():
 def test_kas():
     analysis = KineticAnalysis(alpha, data_object)
     result = analysis.kas_ea(return_data = False)
-    a, b, c= [result[i].get('Ea = ') for i in alpha] 
+    a, b, c= [result[i].get('Ea') for i in alpha] 
     assert a == pytest.approx(134.8546)
     assert b == pytest.approx(151.4584)
     assert c == pytest.approx(163.2806)
@@ -76,7 +77,7 @@ def test_kas():
 def test_starink():
     analysis = KineticAnalysis(alpha, data_object)
     result = analysis.starink_ea(return_data = False)
-    a, b, c= [result[i].get('Ea = ') for i in alpha] 
+    a, b, c= [result[i].get('Ea') for i in alpha] 
     assert a == pytest.approx(135.0985)
     assert b == pytest.approx(151.7226)
     assert c == pytest.approx(163.5560)
@@ -84,7 +85,13 @@ def test_starink():
 def test_friedman():
     analysis = KineticAnalysis(alpha, data_object)
     result = analysis.friedman_ea(return_data = False)
-    a, b, c= [result[i].get('Ea = ') for i in alpha] 
+    a, b, c= [result[i].get('Ea') for i in alpha] 
     assert a == pytest.approx(139.7619)
     assert b == pytest.approx(158.3342)
     assert c == pytest.approx(170.8158)
+
+## 输出结果测试
+def test_export():
+    analysis = KineticAnalysis(alpha, data_object)
+    exports = ExportData(alpha, data_object, analysis)
+    result1 = exports.export_friedman(save_excel=False)

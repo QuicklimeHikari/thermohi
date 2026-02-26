@@ -38,31 +38,43 @@ r2 : float
 
 class KineticAnalysis():
     """
-A class for performing kinetic analysis.
+        A class for performing kinetic analysis.
+        KineticAnalysis(alpha_list, data_object)
 
-Parameters
-----------
-alpha_list : list of float
-    Conversion degrees, e.g. [α1, α2, α3, ...].
+        Parameters
+        ----------
+        alpha_list : list of float
+            Conversion degrees, e.g. [α1, α2, α3, ...].
 
-data_objects : list of DataList
-    Each DataList contains corresponding temperature, heating rate, 
-    and dα/dT data for a given experimental condition.
+        data_objects : list of DataList
+            Each DataList contains corresponding temperature, heating rate, 
+            and dα/dT data for a given experimental condition.
 
-Details
--------
-temperature : list of tuple(float)
-    Temperature datasets for each heating rate, e.g. 
-    [(T11, T12, T13, ... T1n), (T21, T22, T23, ... T2n), ...].
+        Details
+        -------
+        temperature : list of tuple(float)
+        Temperature datasets for each heating rate, e.g. 
+        [(T11, T12, T13, ... T1n), (T21, T22, T23, ... T2n), ...].
 
-beta : list of float
-    Heating rate list, e.g. [b1, b2, b3, ..., bn].
+        beta : list of float
+            Heating rate list, e.g. [b1, b2, b3, ..., bn].
 
-dadT : list of tuple(float)
-    dα/dT datasets corresponding to temperature, e.g. 
-    [(dadT11, dadT12, dadT13, ... dadT1n), 
-     (dadT21, dadT22, dadT23, ... dadT2n), ...].
-"""
+        dadT : list of tuple(float)
+            dα/dT datasets corresponding to temperature, e.g. 
+            [(dadT11, dadT12, dadT13, ... dadT1n), 
+            (dadT21, dadT22, dadT23, ... dadT2n), ...].
+        Returns
+        -------
+        dict
+            A dictionary containing:
+                - Kinetic parameters (Ea, k, b, R²)
+                - Fitting or regression data points if 'KineticAnalysis.*_ea(return_data=True)'
+        Example
+        -------
+            >>> from thermohipy import KineticAnalysis
+            >>> analysis = KineticAnalysis(alpha_list, data_object)
+            >>> results = analysis.fwo_ea()
+    """
     #class3 热动力学分析        
     # 数据结构：alpha = [a1,a2,a3],     
     # temperatrue = [(T11, T12, T13),(T21, T22, T23),(T31, T32, T33)] 
@@ -74,7 +86,7 @@ dadT : list of tuple(float)
         self.alpha_list = list(alpha_list)
         self.objects_data = list(data_objects)
     
-    def fwo_ea(self, return_data = False):
+    def fwo_ea(self, return_data=False):
         self.results = {}   # 计算的结果为一个字典
         self.raw_data = {}
         #ln(beta) = const - 1.052*Ea/RT
@@ -83,11 +95,11 @@ dadT : list of tuple(float)
             data_temp = [1 / temp for temp in data.temperature]
             k, b, r2 = r_square_xy(data_temp,log_beta)
             ea = - self.R / 1000 * k / 1.052
-            self.results[alpha] = {'Ea = ': ea,
-                            'k = ': k,
-                            'b = ': b,
-                            'r^2 = ': r2}
-            # e.g., results(0.1: {'Ea = ': 114.514,'k = ': 1919, 'b = ': 810, 'r^2 = ': 0.9527})
+            self.results[alpha] = {'Ea': ea,
+                            'k': k,
+                            'b': b,
+                            'r^2': r2}
+            # e.g., results(0.1: {'Ea': 114.514,'k': 1919, 'b': 810, 'r^2': 0.9527})
             # e.g., unit of Ea is kJ/mol
             self.raw_data[alpha] = {
                'x': [float(temp) for temp in data_temp],
@@ -98,7 +110,7 @@ dadT : list of tuple(float)
         else:
             return self.results
     
-    def kas_ea(self, return_data = False):
+    def kas_ea(self, return_data=False):
         self.results = {}   # 计算的结果为一个字典
         self.raw_data = {}
         for alpha, data in zip(self.alpha_list,self.objects_data):
@@ -107,11 +119,11 @@ dadT : list of tuple(float)
             data_temp = [1 / temp for temp in data.temperature]
             k, b, r2 = r_square_xy(data_temp,log_beta)
             ea = - self.R / 1000 * k
-            self.results[alpha] = {'Ea = ': ea,
-                            'k = ': k,
-                            'b = ': b,
-                            'r^2 = ': r2}
-            # e.g., results(0.2: {'Ea = ': 114.514,'k = ': 1919, 'b = ': 810, 'r^2 = ': 0.9527})
+            self.results[alpha] = {'Ea': ea,
+                            'k': k,
+                            'b': b,
+                            'r^2': r2}
+            # e.g., results(0.2: {'Ea': 114.514,'k': 1919, 'b': 810, 'r^2': 0.9527})
             # e.g., unit of Ea is kJ/mol
             self.raw_data[alpha] = {
                'x': [float(temp) for temp in data_temp],
@@ -122,7 +134,7 @@ dadT : list of tuple(float)
         else:
             return self.results
     
-    def starink_ea(self, return_data = False):
+    def starink_ea(self, return_data=False):
         self.results = {}   # 计算的结果为一个字典
         self.raw_data = {}
         for alpha, data in zip(self.alpha_list, self.objects_data):
@@ -131,10 +143,10 @@ dadT : list of tuple(float)
             data_temp = [1 / temp for temp in data.temperature]
             k, b, r2 = r_square_xy(data_temp,log_beta)
             ea = - self.R / 1000 * k / 1.0008
-            self.results[alpha] = {'Ea = ': ea,
-                            'k = ': k,
-                            'b = ': b,
-                            'r^2 = ': r2}
+            self.results[alpha] = {'Ea': ea,
+                            'k': k,
+                            'b': b,
+                            'r^2': r2}
             self.raw_data[alpha] = {
             'x': [float(temp) for temp in data_temp],
             'y': [float(beta) for beta in log_beta]
@@ -144,7 +156,7 @@ dadT : list of tuple(float)
         else:
             return self.results
     
-    def friedman_ea(self, return_data = False):
+    def friedman_ea(self, return_data=False):
         self.results = {}   # 计算的结果为一个字典
         self.raw_data = {}
         for alpha, data in zip(self.alpha_list, self.objects_data):
@@ -153,11 +165,11 @@ dadT : list of tuple(float)
             data_temp = [1 / temp for temp in data.temperature]
             k, b, r2 = r_square_xy(data_temp, log_beta)
             ea = - self.R / 1000 * k
-            self.results[alpha] = {'Ea = ': ea,
-                            'k = ': k,
-                            'b = ': b,
-                            'r^2 = ': r2}
-            # e.g., results(0.7 :{'Ea = ': 114.514,'k = ': 1919, 'b = ': 810, 'r^2 = ': 0.9527})
+            self.results[alpha] = {'Ea': ea,
+                            'k': k,
+                            'b': b,
+                            'r^2': r2}
+            # e.g., results(0.7 :{'Ea': 114.514,'k': 1919, 'b': 810, 'r^2': 0.9527})
             # e.g., unit of Ea is kJ/mol
             self.raw_data[alpha] = {
             'x': [float(temp) for temp in data_temp],
@@ -168,7 +180,7 @@ dadT : list of tuple(float)
         else:
             return self.results
         
-    def vyazovkin_ea(self, return_data = False):
+    def vyazovkin_ea(self, return_data=False):
         self.results = dict()
         self.raw_data = dict()
         # （cai近似式）        
@@ -188,7 +200,7 @@ dadT : list of tuple(float)
                 return Phi            
 
             Phi_min  = sp.minimize_scalar(Phi, bounds = (10, 1000),method = 'bounded')
-            self.results[alpha] = {'Ea = ': float(Phi_min.x)}
+            self.results[alpha] = {'Ea': float(Phi_min.x)}
             a = float(Phi_min.x)
             self.raw_data[alpha] = {'x': np.linspace((a - 50),(a + 50), 100),
                              'y': [float(Phi(i)) for i in np.linspace((a - 50),(a + 50), 100)]

@@ -3,26 +3,36 @@ import matplotlib.pyplot as plt
 from .thermoanalysis import KineticAnalysis
 class FittingPlot:
     """
-A class for plotting scatter data and fitted regression curves 
-based on kinetic analysis results.
+        A class for plotting scatter data and fitted regression curves 
+        based on kinetic analysis results.
+        FittingPlot(alpha_list, data_objects, analysis)
 
-Parameters
-----------
-alpha_list : list[float]
-List of conversion fractions (α values).
-data_objects : list[DataList]
-List of `DataList` instances, each containing temperature, 
-heating rate (β), and reaction rate (dα/dt) data for a specific α.
-analysis : KineticAnalysis
-An instance of `KineticAnalysis` used to perform the fitting 
-and provide the regression results.
-"""
+        Parameters
+        ----------
+        alpha_list : list[float]
+            List of conversion fractions (α values).
+        data_objects : list[DataList]
+            List of `DataList` instances, each containing temperature, 
+            heating rate (β), and reaction rate (dα/dt) data for a specific α.
+        analysis : KineticAnalysis
+            An instance of `KineticAnalysis` used to perform the fitting 
+            and provide the regression results.
+        
+        Returns
+        -------
+            Figures of fitting curves.
+        Example
+        -------
+            >>> from thermohipy import FittingPlot
+            >>> plots = FittingPlot(alpha_list, data_object, analysis)
+            >>> results = plots.kas_plot()
+    """
     def __init__(self, alpha_list, data_objects, analysis: KineticAnalysis):
         self.alpha_list = list(alpha_list)
         self.objects_data = list(data_objects)
         self.analysis = analysis
 
-    def fwoplot(self):
+    def fwo_plot(self):
         results = self.analysis.fwo_ea(return_data = True)
         figure = plt.figure(figsize= (8,6))
         axes = plt.subplot(1,1,1)
@@ -36,13 +46,13 @@ and provide the regression results.
             x_min, x_max = np.min(x), np.max(x)
             x_plot = np.linspace(x_min, x_max,10)
             axes.scatter(x,y)
-            axes.plot(x_plot, plotdata[key2].get('k = ') * x_plot + plotdata[key2].get('b = ' ))
+            axes.plot(x_plot, plotdata[key2].get('k') * x_plot + plotdata[key2].get('b'))
             plt.draw()   # 刷新绘图
             plt.pause(0.2)  # 暂停 0.3 秒，看清楚每条线
         plt.ioff()  # 关闭交互模式
         plt.show()
 
-    def kasplot(self):
+    def kas_plot(self):
         results = self.analysis.kas_ea(return_data = True)
         figure = plt.figure(figsize= (8,6))
         axes = plt.subplot(1,1,1)
@@ -56,13 +66,13 @@ and provide the regression results.
             x_min, x_max = np.min(x), np.max(x)
             x_plot = np.linspace(x_min, x_max,10)
             axes.scatter(x,y)
-            axes.plot(x_plot, plotdata[key2].get('k = ') * x_plot + plotdata[key2].get('b = ' ))
+            axes.plot(x_plot, plotdata[key2].get('k') * x_plot + plotdata[key2].get('b' ))
             plt.draw()   # 刷新绘图
             plt.pause(0.2)  # 暂停 0.3 秒，看清楚每条线
         plt.ioff()  # 关闭交互模式
         plt.show()
     
-    def starinkplot(self):
+    def starink_plot(self):
         results = self.analysis.starink_ea(return_data = True)
         figure = plt.figure(figsize= (8,6))
         axes = plt.subplot(1,1,1)
@@ -76,13 +86,13 @@ and provide the regression results.
             x_min, x_max = np.min(x), np.max(x)
             x_plot = np.linspace(x_min, x_max,10)
             axes.scatter(x,y)
-            axes.plot(x_plot, plotdata[key2].get('k = ') * x_plot + plotdata[key2].get('b = ' ))
+            axes.plot(x_plot, plotdata[key2].get('k') * x_plot + plotdata[key2].get('b'))
             plt.draw()   # 刷新绘图
             plt.pause(0.2)  # 暂停 0.3 秒，看清楚每条线
         plt.ioff()  # 关闭交互模式
         plt.show()
 
-    def friedmanplot(self):
+    def friedman_plot(self):
         results = self.analysis.friedman_ea(return_data = True)
         figure = plt.figure(figsize= (8,6))
         axes = plt.subplot(1,1,1)
@@ -96,13 +106,13 @@ and provide the regression results.
             x_min, x_max = np.min(x), np.max(x)
             x_plot = np.linspace(x_min, x_max,10)
             axes.scatter(x,y)
-            axes.plot(x_plot, plotdata[key2].get('k = ') * x_plot + plotdata[key2].get('b = ' ))
+            axes.plot(x_plot, plotdata[key2].get('k') * x_plot + plotdata[key2].get('b'))
             plt.draw()   # 刷新绘图
             plt.pause(0.2)  # 暂停 0.3 秒，看清楚每条线
         plt.ioff()  # 关闭交互模式
         plt.show()
 
-    def vyazovkinplot(self):
+    def vyazovkin_plot(self):
         results = self.analysis.vyazovkin_ea (return_data = True)
         axes = plt.subplot(1,1,1)
         axes.set_xlabel("E(kJ/mol)",fontsize = 14, fontname = 'arial')

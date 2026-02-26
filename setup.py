@@ -2,12 +2,14 @@ from setuptools import setup, find_packages
 
 setup(
     name="thermohipy",
-    version='0.2.2',
+    version='0.3.0',
     packages=find_packages(),
     install_requires=[
         'numpy',
         'matplotlib',
-        'scipy'
+        'scipy',
+        'pandas',
+        'os',
     ],
     python_requires='>=3.9',
     author='Hikari Quicklime',
