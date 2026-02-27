@@ -63,7 +63,7 @@ for key in results1:
     print(key, f"{ea:.2f}, {k:.4f}, {b:.4f}, {r2:.4f}")
 print("_"*25,"end","_"*25,"\n")
 
-# show the results and plotting data （return data = True, except Vyazovkin method）
+# show the results and plotting data （return data=True, except Vyazovkin method）
 # if return_data is True the results is a tuple(results, raw data for plotting)) consists of 2 dict.
 results2 = analysis.kas_ea(return_data = True)
 results2_data = results2[0] # Ea, k, b, and r2
@@ -89,10 +89,10 @@ for key in results2_raw_data:
 
 
 ### Vyazovkin method ###
-# return data structure(tuple): ({'alpha':{'Ea = ': value}, ...}, {'alpha':{'x': value, 'y': value},...})
+# return data structure(tuple): ({'alpha':{'Ea': value}, ...}, {'alpha':{'x': value, 'y': value},...})
 # For the Vyazovkin method, the returned raw data is intended for curve plots (with 100 points).
 results3 = analysis.vyazovkin_ea(return_data = True)
-results3_data = results3[0] # tuple[0] = {'alpha':{'Ea = ': value}, 'alpha2':{'Ea = ': value}, ...}
+results3_data = results3[0] # tuple[0] = {'alpha':{'Ea': value}, 'alpha2':{'Ea': value}, ...}
 results3_raw_data = results3[1] # tuple[1] = {'alpha1':{'x': value, 'y': value}, 'alpha2':{'x': value, 'y': value}...}
 print("_" *15, "Vyazovkin method", "_" *15)
 for key in results3_data:
