@@ -93,15 +93,19 @@ Result (`<class 'dict'>`)
 If `save_excel=True`, the analytical results will be saved as an `.xlsx` file 
 in the current working directory. The absolute file path will be printed 
 in the terminal.
+
 ![terminal](plot_thermohi/shiyitu.png)
 
 The structure kinetic results of FWO, KAS, Starink and Friedman method is almost the same:
+
 ![kinetic results](plot_thermohi/result1.png)
 
 and the plotting data(scatter points)
+
 ![scatter points](plot_thermohi/result2.png)
 
 The fitting curves of Vyazovkin method:
+
 ![Vyazovkin fitting curves](plot_thermohi/result3.png)
 
 
