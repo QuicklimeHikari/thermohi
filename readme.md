@@ -21,10 +21,12 @@ with clean APIs and ready-to-plot results. (You can also export the data and use
 There is no limit on the number of heating runs or conversion values; the examples include data with 3 heating rates and 5 conversion values.
 Data can be exported for plotting. Note: Vyazovkin method may generate a very large amount of data.
 
+
 ThermoHi performs Arrhenius-type parameter extraction for non-isothermal data under linear heating conditions.
 The method is applicable to various thermo-analytical datasets provided that a well-defined characteristic temperature can be identified,(e.g., DSC, DMA).
 For non-chemical transitions (e.g., glass transition or relaxation processes), the extracted value should be interpreted as an apparent activation energy.
 Users are responsible for evaluating the physical validity of the underlying model.
+
 ---
 
 ## Why ThermoHi?
