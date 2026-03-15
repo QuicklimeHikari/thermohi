@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: thermohipy
-Version: 0.3.0
+Version: 0.3.1
 Summary: A thermogravimetric analysis helper tool by Hikari.
 Home-page: https://github.com/QuicklimeHikari/thermohi
 Author: Hikari Quicklime
@@ -28,8 +28,16 @@ with clean APIs and ready-to-plot results. (You can also export the data and use
 
 > An example file (`example.py`) is included to illustrate the usage of ThermoHi's main functionalities.
 > Supports temperature input in Celsius (°C), Fahrenheit (°F), and Kelvin (K).All values are internally converted to Kelvin.
+
+## 🔍 Notes
 There is no limit on the number of heating runs or conversion values; the examples include data with 3 heating rates and 5 conversion values.
 Data can be exported for plotting. Note: Vyazovkin method may generate a very large amount of data.
+
+
+ThermoHi performs Arrhenius-type parameter extraction for non-isothermal data under linear heating conditions.
+The method is applicable to various thermo-analytical datasets provided that a well-defined characteristic temperature can be identified,(e.g., DSC, DMA).
+For non-chemical transitions (e.g., glass transition or relaxation processes), the extracted value should be interpreted as an apparent activation energy.
+Users are responsible for evaluating the physical validity of the underlying model.
 
 ---
 
@@ -105,15 +113,19 @@ Result (`<class 'dict'>`)
 If `save_excel=True`, the analytical results will be saved as an `.xlsx` file 
 in the current working directory. The absolute file path will be printed 
 in the terminal.
+
 ![terminal](plot_thermohi/shiyitu.png)
 
 The structure kinetic results of FWO, KAS, Starink and Friedman method is almost the same:
+
 ![kinetic results](plot_thermohi/result1.png)
 
 and the plotting data(scatter points)
+
 ![scatter points](plot_thermohi/result2.png)
 
 The fitting curves of Vyazovkin method:
+
 ![Vyazovkin fitting curves](plot_thermohi/result3.png)
 
 

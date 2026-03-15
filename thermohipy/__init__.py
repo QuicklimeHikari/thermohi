@@ -3,7 +3,7 @@ from .datalistio import DataList
 from .thermoanalysis import KineticAnalysis, r_square_xy
 from .plotting import FittingPlot
 from .export import ExportData
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 __author__ = "Hikari Quicklime"
 __email__ = "897237104@qq.com"
 __all__ = [

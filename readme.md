@@ -102,40 +102,40 @@ If `save_excel=True`, the analytical results will be saved as an `.xlsx` file
 in the current working directory. The absolute file path will be printed 
 in the terminal.
 
-![terminal](plot_thermohi/shiyitu.png)
+![terminal](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/shiyitu.png)
 
 The structure kinetic results of FWO, KAS, Starink and Friedman method is almost the same:
 
-![kinetic results](plot_thermohi/result1.png)
+![kinetic results](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/result1.png)
 
 and the plotting data(scatter points)
 
-![scatter points](plot_thermohi/result2.png)
+![scatter points](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/result2.png)
 
 The fitting curves of Vyazovkin method:
 
-![Vyazovkin fitting curves](plot_thermohi/result3.png)
+![Vyazovkin fitting curves](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/result3.png)
 
 
 ## Plotting examples
 FWO method
 
-![FWO method](plot_thermohi/Figure_1.png)
+![FWO method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_1.png)
 
 KAS method
-![KAS method](plot_thermohi/Figure_2.png)
+![KAS method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_2.png)
 
 Starink method
 
-![Starink method](plot_thermohi/Figure_3.png)
+![Starink method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_3.png)
 
 Friedman method
 
-![Friedman method](plot_thermohi/Figure_4.png)
+![Friedman method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_4.png)
 
 Vyazovkin method
 
-![Vyazovkin method](plot_thermohi/Figure_5.png)
+![Vyazovkin method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_5.png)
 
 ## 🔬 Planned Features
 Future versions of **ThermoHi** will include:
