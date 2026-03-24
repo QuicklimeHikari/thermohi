@@ -119,22 +119,24 @@ The fitting curves of Vyazovkin method:
 
 ## Plotting examples
 FWO method
+$$\ln\left(\beta\right) = Const. -\frac{E_{\alpha}}{RT}$$
 
 ![FWO method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_1.png)
 
 KAS method
+$$\ln\left(\frac{\beta}{T^2}\right) = Const. -\frac{E_\alpha}{RT}$$
 ![KAS method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_2.png)
 
 Starink method
-
+$$\ln\left(\frac{\beta}{T^{1.92}}\right) = Const. -1.0008\frac{E_{\alpha}}{RT}$$
 ![Starink method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_3.png)
 
 Friedman method
-
+$$\ln\left(\frac{\text{d}\alpha}{\text{d}t}\right) =\ln[Af(\alpha)]- \frac{E_{\alpha}}{RT}$$
 ![Friedman method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_4.png)
 
 Vyazovkin method
-
+$$\Phi(E_\alpha) = \min \sum_{i=1}^{n} \sum_{\substack{j=1 \\ j \neq i}}^{n} \frac{I(E_\alpha, T_{\alpha,i}) \cdot \beta_j}{I(E_\alpha, T_{\alpha,j}) \cdot \beta_i}$$
 ![Vyazovkin method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_5.png)
 
 ## 🔬 Planned Features
