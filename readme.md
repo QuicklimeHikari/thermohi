@@ -137,6 +137,7 @@ $$\ln\left(\frac{\text{d}\alpha}{\text{d}t}\right) =\ln[Af(\alpha)]- \frac{E_{\a
 
 Vyazovkin method
 $$\Phi(E_\alpha) = \min \sum_{i=1}^{n} \sum_{\substack{j=1 \\ j \neq i}}^{n} \frac{I(E_\alpha, T_{\alpha,i}) \cdot \beta_j}{I(E_\alpha, T_{\alpha,j}) \cdot \beta_i}$$
+
 ![Vyazovkin method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_5.png)
 
 ## 🔬 Planned Features
