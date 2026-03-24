@@ -143,11 +143,13 @@ $$\ln\left(\frac{\text{d}\alpha}{\text{d}t}\right) =\ln[Af(\alpha)]- \frac{E_{\a
 ![Friedman method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_4.png)
 
 Vyazovkin method
+
 $$\Phi(E_\alpha) = \min \sum_{i=1}^{n} \sum_{\substack{j=1 \\ j \neq i}}^{n} \frac{I(E_\alpha, T_{\alpha,i}) \cdot \beta_j}{I(E_\alpha, T_{\alpha,j}) \cdot \beta_i}$$
 
-where 
+here we use Cai Approximation (*AIChE Journal* 2006;52:1554–7) to calculated $I(E_\alpha, T_\alpha)$:
+
 $$I(E_\alpha, T_\alpha) \approx \frac{R T_\alpha^2 E_\alpha + 0.6669\, R T_\alpha}{E_\alpha \left(E_\alpha + 2.64943\, R T_\alpha\right)}\exp\left(-\frac{E_\alpha}{R T_\alpha}\right)$$
-(Cai approximation).
+
 ![Vyazovkin method](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/Figure_5.png)
 
 ## 🔬 Planned Features
