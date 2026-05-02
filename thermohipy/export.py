@@ -58,6 +58,7 @@ class ExportData:
         results = analysis_method(return_data=True)
         kinetic_columns = ['Ea (kJ/mol)', 'b(intercept)', 'k(slope)', 'r^2  ']
         kinetic_index = self.alpha_list
+        beta_index = self.objects_data[0].beta
         ea, b, k, r2 = [], [], [], []
         for a in results[0]:
             ea.append(results[0][a]['Ea'])
@@ -71,17 +72,20 @@ class ExportData:
         for b in results[1]:
             x.append(results[1][b]['x'])
             y.append(results[1][b]['y'])
-        datas_x, datas_y = np.array(x), np.array(y)
-        beta_x = [f'x_{i+1}' for i in range(datas_x.shape[1])]
-        scatte_plots_x = pd.DataFrame(data=datas_x,index=kinetic_index,columns=beta_x)
-        scatte_plots_x.index.name = 'α'
-        beta_y = [f'y_{i+1}' for i in range(datas_y.shape[1])]
-        scatte_plots_y= pd.DataFrame(data = datas_y, index = kinetic_index, columns=beta_y)
-        scatte_plots_y.index.name = 'α'
-        scatte_plots_xy = pd.concat([scatte_plots_x, scatte_plots_y], axis=1)
+        datas_x, datas_y = np.array(x).T, np.array(y).T
+
+        scatte_plots_xy = []
+        columns = []
+        for i, j in zip(range(datas_x.shape[1]),kinetic_index):
+            columns = columns + [f'x(α={j})', f'y(α={j})']    
+            scatte_plots_xy.append(datas_x[:, i])
+            scatte_plots_xy.append(datas_y[:, i])
+            
+        scatte_plots_data = pd.DataFrame(data=np.array(scatte_plots_xy).T, index=beta_index, columns=columns)
+        scatte_plots_data.index.name = 'β\n(K/min)'
         final_results = {
             'Kinetic_Parameters': kinetic_parameters,
-            f'{name_method}_Points': scatte_plots_xy
+            f'{name_method}_Points': scatte_plots_data
         }
         if save_excel:
             file_name = f'{name_method}_Results.xlsx'
@@ -123,15 +127,22 @@ class ExportData:
         index_x = [f'x(α={i})' for i in kinetic_index]
         curve_plots_x = pd.DataFrame(data=datas_x.T,columns=index_x)
         curve_plots_x .index.name = 'α'
-
         index_y = [f'y(α={i})' for i in kinetic_index]
         curve_plots_y= pd.DataFrame(data = datas_y.T, columns=index_y)
-        curve_plots_y.index.name = 'points'
-        curve_plots_xy = pd.concat([curve_plots_x, curve_plots_y], axis=1)
-        curve_plots_xy.index.name = 'points'
+
+        curve_plots_xy = []
+        columns = []
+        for i,j in zip(range(curve_plots_x.shape[1]), kinetic_index):
+            columns = columns + [f'Ea(α={j})', f'Φ(α={j})']
+            curve_plots_xy.append(datas_x[i])
+            curve_plots_xy.append(datas_y[i])
+
+        curve_plots_data = pd.DataFrame(data=np.array(curve_plots_xy).T, columns=columns)
+        curve_plots_data.index.name = 'points'
+
         final_results = {
             'Kinetic_Parameters': kinetic_parameters,
-            'Vyazovkin_Points': curve_plots_xy
+            'Vyazovkin_Points': curve_plots_data
         }
         if save_excel:
             file_name = 'Vyazovkin_Results.xlsx'

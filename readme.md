@@ -204,3 +204,10 @@ Forestry Industry Researcher & Independent Developer
 
 ```bash
 pip install thermohipy
+```
+## Update 2026.5.2
+The output data arrangement has been modified to facilitate plotting.
+**before:** the arrangement is x1 x2 x3 ... xn; y1 y2 y3 ... yn
+![after](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/before.png)
+**after:** the arrangement now is x1 y1; x2 y2; x3 y3; ... xn yn
+![after](https://github.com/QuicklimeHikari/thermohi/blob/main/plot_thermohi/after.png)
